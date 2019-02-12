@@ -21,28 +21,24 @@ var connection = mysql.createConnection({
 connection.connect(function(err) {
     if (err) throw err;
 
-    readItems();
+    start();
+
 });
 
-function readItems() {
-    console.log("Selecting all items...\n");
-    connection.query("SELECT * FROM products", function(err, res) {
+function start() {
+
+    connection.query("SELECT * FROM products", function(err, response) {
         if (err) throw err;
-    
-        var items = res;
 
-        items.forEach(display);
-
-        function display() {
-            console.log("ID: " + this.id);
-            console.log("Product: " + this.product_name);
-            console.log("Department: " + this.department_name);
-            console.log("Department: " + this.price);
-            console.log("------------------------");
-
+        else {
+            for (var i = 0; i < response.length; i++) {
+                console.log("\nID: " + response[i].id);
+                console.log("Product: " + response[i].product_name);
+                console.log("Department: " + response[i].department_name);
+                console.log("Price: " + response[i].price);
+                console.log("------------------------");
+            };
         };
 
-        connection.end();
     });
-}
-
+};
