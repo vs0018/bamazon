@@ -29,7 +29,20 @@ function readItems() {
     connection.query("SELECT * FROM products", function(err, res) {
         if (err) throw err;
     
-        console.log(res);
+        var items = res;
+
+        items.forEach(display);
+
+        function display() {
+            console.log("ID: " + this.id);
+            console.log("Product: " + this.product_name);
+            console.log("Department: " + this.department_name);
+            console.log("Department: " + this.price);
+            console.log("------------------------");
+
+        };
+
         connection.end();
     });
 }
+
