@@ -1,5 +1,4 @@
-# bamazon
-bamazon Node app - Week Twelve
+# bamazon app - Week Twelve
 ------------------
 
 This is a simple inventory app using Node.js and MySQL
