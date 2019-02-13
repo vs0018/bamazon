@@ -45,20 +45,18 @@ function start() {
 
 function buyItem() {
 
-    connection.query("SELECT * FROM products", function(err, results) {
+    connection.query("SELECT * FROM products", function(err, res) {
         if (err) throw err;
-        
-        console.log (results);
-        
+
     inquirer
     .prompt([
     {
         name: "choice",
         type: "rawlist",
-        choices: function(results) {
+        choices: function(value) {
         var choiceArray = [];
-        for (var i = 0; i < results.length; i++) {
-            choiceArray.push(results[i].product_name);
+        for (var i = 0; i < res.length; i++) {
+            choiceArray.push(res[i].product_name);
         }
         return choiceArray;
         },
@@ -73,14 +71,14 @@ function buyItem() {
     .then(function(answer) {
         // get the information of the chosen item
         var chosenItem;
-        for (var i = 0; i < results.length; i++) {
-            if (results[i].product_name === answer.choice) {
-            chosenItem = results[i];
+        for (var i = 0; i < res.length; i++) {
+            if (res[i].product_name === answer.choice) {
+            chosenItem = res[i];
             }
         }
 
         // determine if there is enough stock to fulfill order
-        if (chosenItem.stock_quantity < parseInt(answer.buy)) {
+        if (chosenItem.stock_quantity > parseInt(answer.buy)) {
         
             // stock high enough, so update db, let the user know, and start over
             connection.query(
