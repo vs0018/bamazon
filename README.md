@@ -1,9 +1,9 @@
 # bamazon
 bamazon Node app - Week Twelve
 
-This is a simple inventory add using Node.js and MySQL
+This is a simple inventory app using Node.js and MySQL
 
-Users can browse the store inventory and purchase items if they wish
+Users can browse the virtual store inventory and purchase items if they wish
 
 If the user purchases items, the MySQL DB inventory is automatically updated
 
