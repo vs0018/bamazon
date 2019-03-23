@@ -1,7 +1,7 @@
 # bamazon app - Week Twelve
 ------------------
 
-This is a simple inventory app using Node.js and MySQL
+This is a simple inventory CLI app using Node.js and MySQL
 
 Users can browse the virtual store inventory and purchase items if they wish
 
